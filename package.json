@@ -2,13 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo 'No build process required for JS'",
-    "start": "server.js",
-    "vercel-build": "prisma generate && prisma migrate deploy",
-    "prisma:generate": "prisma generate"
-  },
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "npm run prisma:migration && node server.js",
+  "prisma:migration": "npx prisma migrate deploy",
+  "dev": "nodemon server.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
