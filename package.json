@@ -1,12 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
+  "main": "src/index.js",
+"scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run prisma:migration && node server.js",
+    "start": "npm run prisma:migration && node src/index.js", 
     "prisma:migration": "npx prisma migrate deploy",
-    "dev": "nodemon server.js"
+   "dev": "nodemon src/index.js", 
+    "vercel-build": "npx prisma generate && npx prisma migrate deploy",  
+    "build": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
