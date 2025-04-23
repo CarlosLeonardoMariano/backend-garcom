@@ -8,8 +8,8 @@
     "prisma:migration": "npx prisma migrate deploy",
    "dev": "nodemon src/index.js", 
     "vercel-build": "npx prisma generate && npx prisma migrate deploy",  
-    "build": "npx prisma generate"
-  },
+    "build": "chmod +x ./node_modules/.bin/prisma && npx prisma generate"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
