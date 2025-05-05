@@ -15,6 +15,8 @@ import { FecharPedidoController } from './controller/ordem/fecharPedidoControlle
 import { ListarPedidosController } from './controller/ordem/listarPedidosController.js';
 import { DetalhesOrderController } from './controller/ordem/detalhesOrderController.js';
 import { FinishOrdemController } from './controller/ordem/finishOrdemController.js';
+import { CreateFinanceiroController } from './controller/financeiro/createFinanceiroController.js';
+
 
 
 import IsAutenticantion from './middlewares/isAuteticantion.js';
@@ -66,5 +68,7 @@ router.get('/ordem/detalhes', IsAutenticantion, new DetalhesOrderController().ha
 
 //ROTA DE FINALIZACÃO NA COZINHA DA PIZZARIA
 router.put('/order/finalizado', IsAutenticantion, new FinishOrdemController().handle);
+
+router.post('/financeiro', IsAutenticantion, new CreateFinanceiroController().handle);
 
 export { router };
