@@ -5,7 +5,7 @@ import {hash} from "bcryptjs"
 
 class CreateUserService {
 
-    async execute({ name, email, senha}) {
+    async execute({ name, email, senha, ip}) {
       
         if(!email){
             throw new Error("email invalido");
@@ -26,7 +26,8 @@ class CreateUserService {
             data:{
                 name:name,
                 email:email,
-                passaword:passwordCrypton
+                passaword:passwordCrypton,
+                ip: ip
             },
             select:{
                 id:true,

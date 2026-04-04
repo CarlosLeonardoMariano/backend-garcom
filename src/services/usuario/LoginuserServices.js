@@ -7,7 +7,7 @@ dotenv.config();  // Carrega variáveis de ambiente do arquivo .env
 const { sign } = jwt; // Desestruturação da função 'sign' do JWT
 
 class LoginuserServices {
-  async execute({ email, senha }) {
+  async execute({ email, senha, ip }) {
 
     //console.log("JWT_SECRET:", process.env.JWT_SECRET); // Verificando se a chave secreta foi carregada
 
@@ -29,6 +29,12 @@ class LoginuserServices {
     if (!senhaValida) {
       throw new Error("Erro de autenticação: a senha informada não corresponde ao nosso registro. Tente novamente.");
     }
+
+    // Atualiza o IP do usuário no banco
+    await prisma.usuario.update({
+      where: { id: usuariologin.id },
+      data: { ip: ip }
+    });
 
     // Garantindo que a variável JWT_SECRET esteja definida
     if (!process.env.JWT_SECRET) {
